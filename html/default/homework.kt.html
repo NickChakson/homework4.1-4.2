@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>homework.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">homework</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">homework.kt</span></div><h1>homework.kt</h1><pre class="source lang-java linenums">const val VISA_MIR_TAX: Double = 0.0075
+const val VISA_MIR_MIN_TAX: Double = 35_00.0
+const val MASTERCARD_MAESTRO_TAX: Double = 0.006
+const val MASTERCARD_MAESTRO_MIN_TAX: Double = 2000.0
+const val MASTERCARD_MAESTRO_MAX_TRANSFER: Double = 75_000_00.0
+
+fun main() {
+
+<span class="nc" id="L9">    print(&quot;РЎСѓРјРјР° РїСЂРµРґС‹РґСѓС‰РёС… РїРµСЂРµРІРѕРґРѕРІ РІ СЌС‚РѕРј РјРµСЃСЏС†Рµ (РІ СЂСѓР±Р»СЏС…): &quot;)</span>
+<span class="nc" id="L10">    val transferBefore: Double = readln().toDouble() * 100</span>
+<span class="nc" id="L11">    val card = typeCard()</span>
+<span class="nc" id="L12">    println(&quot;РЈРєР°Р¶РёС‚Рµ СЃСѓРјРјСѓ РїРµСЂРµРІРѕРґР°: &quot;)</span>
+<span class="nc" id="L13">    val transfer = readln().toDouble() * 100</span>
+
+<span class="nc" id="L15">    val taxMastercardMaestro = taxForTransferMastercardMaestro(transferBefore, transfer)</span>
+<span class="nc" id="L16">    val taxVkPay = taxForTransferVkPay()</span>
+<span class="nc" id="L17">    val taxVisaMir = taxForTransferVisaMir(transfer)</span>
+
+<span class="nc bnc" id="L19" title="All 16 branches missed.">    when (card) {</span>
+        &quot;Mastercard&quot;, &quot;Maestro&quot; -&gt; {
+<span class="nc" id="L21">            println((&quot;РџСЂРё РїРµСЂРµРІРѕРґРµ &quot; + transfer / 100 + &quot; СЂСѓР±. РєРѕРјРёСЃСЃРёСЏ СЃРѕСЃС‚Р°РІРёС‚ &quot; + taxMastercardMaestro / 100) + &quot; СЂСѓР±.&quot;)</span>
+        }
+        &quot;VK Pay&quot; -&gt; {
+<span class="nc" id="L24">            println((&quot;РџСЂРё РїРµСЂРµРІРѕРґРµ &quot; + transfer / 100 + &quot; СЂСѓР±. РєРѕРјРёСЃСЃРёСЏ СЃРѕСЃС‚Р°РІРёС‚ &quot; + taxVkPay / 100) + &quot; СЂСѓР±.&quot;)</span>
+        }
+
+        &quot;Visa&quot;, &quot;Mir&quot; -&gt; {
+<span class="nc" id="L28">            println((&quot;РџСЂРё РїРµСЂРµРІРѕРґРµ &quot; + transfer / 100 + &quot; СЂСѓР±. РєРѕРјРёСЃСЃРёСЏ СЃРѕСЃС‚Р°РІРёС‚ &quot; + taxVisaMir / 100) + &quot; СЂСѓР±.&quot;)</span>
+        }
+    }
+
+
+<span class="nc" id="L33">}</span>
+
+fun typeCard(): String {
+<span class="nc" id="L36">    println(&quot;РЈРєР°Р¶РёС‚Рµ РїР»Р°С‚С‘Р¶РЅСѓСЋ СЃРёСЃС‚РµРјСѓ&quot;)</span>
+<span class="nc" id="L37">    println(&quot;1. Mastercard&quot;)</span>
+<span class="nc" id="L38">    println(&quot;2. Maestro&quot;)</span>
+<span class="nc" id="L39">    println(&quot;3. Visa&quot;)</span>
+<span class="nc" id="L40">    println(&quot;4. РњР�Р &quot;)</span>
+<span class="nc" id="L41">    println(&quot;5. VK Pay&quot;)</span>
+<span class="nc bnc" id="L42" title="All 6 branches missed.">    return when (readln()) {</span>
+<span class="nc" id="L43">        &quot;1&quot; -&gt; &quot;Mastercard&quot;</span>
+<span class="nc" id="L44">        &quot;2&quot; -&gt; &quot;Maestro&quot;</span>
+<span class="nc" id="L45">        &quot;3&quot; -&gt; &quot;Visa&quot;</span>
+<span class="nc" id="L46">        &quot;4&quot; -&gt; &quot;РњР�Р &quot;</span>
+<span class="nc" id="L47">        &quot;5&quot; -&gt; &quot;VK Pay&quot;</span>
+<span class="nc" id="L48">        else -&gt; &quot;РћС€РёР±РєР°&quot;</span>
+    }
+}
+
+fun taxForTransferVkPay(): Double {
+<span class="nc" id="L53">    return 0.0</span>
+}
+
+fun taxForTransferVisaMir(_transfer: Double): Double {
+<span class="fc" id="L57">    val tax = _transfer * VISA_MIR_TAX</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">    return if (tax &lt; VISA_MIR_MIN_TAX) VISA_MIR_MIN_TAX else tax</span>
+}
+
+fun taxForTransferMastercardMaestro(
+    _transferBefore: Double,
+    _transfer: Double
+): Double {
+<span class="fc" id="L65">    val tax = (_transfer * MASTERCARD_MAESTRO_TAX) + MASTERCARD_MAESTRO_MIN_TAX</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">    return if (_transferBefore &gt; MASTERCARD_MAESTRO_MAX_TRANSFER) tax else 0.0</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
