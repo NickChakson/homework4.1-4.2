@@ -8,7 +8,7 @@ class HomeworkKtTest {
     fun taxForTransferVisaMirWithFullFees() {
         val transfer: Double = 10_000_00.00
         val result: Int = taxForTransferVisaMir(_transfer = transfer).toInt()
-        assertEquals(75000, result)
+        assertEquals(7500, result)
 
     }
 
